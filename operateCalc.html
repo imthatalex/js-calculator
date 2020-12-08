@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <style>
+
+            button{
+                height: 70px;
+                width: 70px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="container">
+            <input type="text">
+        </div>
+
+        <script>
+        // Global Variables
+
+        const input = document.querySelector('input')
+        const container = document.getElementById('container');
+        let initialValue = [];
+        let secondValue = [];
+        let operation;
+        let currentOperation;
+        let total;
+
+
+
+        // Operations
+
+        // Clear
+
+        const clearButton = document.createElement('button');
+        clearButton.textContent = "C";
+        container.appendChild(clearButton);
+
+        function clear(){
+            input.value = "";
+            initialValue = [];
+            secondValue = [];
+            removeSecondValueListeners();
+            addInitialValueListeners();
+        }
+
+        clearButton.addEventListener('click', clear);
+
+
+        function addInitialValueListeners(){
+            numberZero.addEventListener('click', initialValueZero);
+            numberOne.addEventListener('click', initialValueOne);
+            numberTwo.addEventListener('click', initialValueTwo);
+            numberThree.addEventListener('click', initialValueThree);
+            numberFour.addEventListener('click', initialValueFour);
+            numberFive.addEventListener('click', initialValueFive);
+            numberSix.addEventListener('click', initialValueSix);
+            numberSeven.addEventListener('click', initialValueSeven);
+            numberEight.addEventListener('click', initialValueEight);
+            numberNine.addEventListener('click', initialValueNine);
+        }
+
+
+        function removeInitialValueListeners(){
+            numberZero.removeEventListener('click', initialValueZero);
+            numberOne.removeEventListener('click', initialValueOne);
+            numberTwo.removeEventListener('click', initialValueTwo);
+            numberThree.removeEventListener('click', initialValueThree);
+            numberFour.removeEventListener('click', initialValueFour);
+            numberFive.removeEventListener('click', initialValueFive);
+            numberSix.removeEventListener('click', initialValueSix);
+            numberSeven.removeEventListener('click', initialValueSeven);
+            numberEight.removeEventListener('click', initialValueEight);
+            numberNine.removeEventListener('click', initialValueNine);
+        }
+
+        function addSecondValueListeners(){
+            numberZero.addEventListener('click', secondValueZero);
+            numberOne.addEventListener('click', secondValueOne);
+            numberTwo.addEventListener('click', secondValueTwo);
+            numberThree.addEventListener('click', secondValueThree);
+            numberFour.addEventListener('click', secondValueFour);
+            numberFive.addEventListener('click', secondValueFive);
+            numberSix.addEventListener('click', secondValueSix);
+            numberSeven.addEventListener('click', secondValueSeven);
+            numberEight.addEventListener('click', secondValueEight);
+            numberNine.addEventListener('click', secondValueNine);
+        }
+
+        function removeSecondValueListeners(){
+            numberZero.removeEventListener('click', secondValueZero);
+            numberOne.removeEventListener('click', secondValueOne);
+            numberTwo.removeEventListener('click', secondValueTwo);
+            numberThree.removeEventListener('click', secondValueThree);
+            numberFour.removeEventListener('click', secondValueFour);
+            numberFive.removeEventListener('click', secondValueFive);
+            numberSix.removeEventListener('click', secondValueSix);
+            numberSeven.removeEventListener('click', secondValueSeven);
+            numberEight.removeEventListener('click', secondValueEight);
+            numberNine.removeEventListener('click', secondValueNine);
+        }
+
+
+        // Add
+
+        const additionButton = document.createElement('button');
+        additionButton.textContent = "+";
+        container.appendChild(additionButton);
+
+        function additionPrerequisites() {
+            input.value = additionButton.textContent;
+            currentOperation = operation;
+            console.log("currentOperation:" + currentOperation)
+            operation = additionButton.textContent;
+            if(secondValue.length == 0){
+                removeInitialValueListeners();
+                addSecondValueListeners();
+            };
+            if(initialValue.length > 0 && secondValue.length > 0) {
+                continousOperations(currentOperation);
+                removeInitialValueListeners();
+                addSecondValueListeners();
+            }
+        }
+
+        function add(x,y){
+            total = x + y;
+        }
+
+        additionButton.addEventListener('click', additionPrerequisites);
+
+        // Subtract 
+
+
+
+        const subtractionButton = document.createElement('button');
+        subtractionButton.textContent = "-";
+        container.appendChild(subtractionButton);
+
+        function subtractionPrerequisites() {
+            input.value = subtractionButton.textContent;
+            currentOperation = operation;
+            console.log("currentOperation:" + currentOperation)
+            operation = subtractionButton.textContent;
+            if(secondValue.length == 0){
+                removeInitialValueListeners();
+                addSecondValueListeners();
+            };
+            if(initialValue.length > 0 && secondValue.length > 0) {
+                continousOperations(currentOperation);
+                removeInitialValueListeners();
+                addSecondValueListeners();
+            }
+        }
+
+        function subtract(x, y) {
+            total = x - y;
+        }
+
+        subtractionButton.addEventListener('click', subtractionPrerequisites);
+
+        // Multiply
+
+        const multiplicationButton = document.createElement('button');
+        multiplicationButton.textContent = "*";
+        container.appendChild(multiplicationButton);
+
+        function multiplicationPrerequisites() {
+            input.value = multiplicationButton.textContent;
+            currentOperation = operation;
+            console.log("currentOperation:" + currentOperation)
+            operation = multiplicationButton.textContent;
+            if(secondValue.length == 0){
+                removeInitialValueListeners();
+                addSecondValueListeners();
+            };
+            if(initialValue.length > 0 && secondValue.length > 0) {
+                continousOperations(currentOperation);
+                removeInitialValueListeners();
+                addSecondValueListeners();
+            }
+        }
+
+        
+        function multiply(x, y) {
+            total = x * y;
+        }
+
+        multiplicationButton.addEventListener('click', multiplicationPrerequisites);
+
+
+        // Divide
+
+        const divisionButton = document.createElement('button');
+        divisionButton.textContent = "/";
+        container.appendChild(divisionButton);
+
+          function divisionPrerequisites() {
+            input.value = divisionButton.textContent;
+            currentOperation = operation;
+            console.log("currentOperation:" + currentOperation)
+            operation = divisionButton.textContent;
+            if(secondValue.length == 0){
+                removeInitialValueListeners();
+                addSecondValueListeners();
+            };
+            if(initialValue.length > 0 && secondValue.length > 0) {
+                continousOperations(currentOperation);
+                removeInitialValueListeners();
+                addSecondValueListeners();
+            }
+        }
+
+        function divide(x, y) {
+            total = x / y;
+        }
+
+        divisionButton.addEventListener('click', divisionPrerequisites);
+
+
+        // Equals
+
+
+        function continousOperations(operator) {
+            if (!(initialValue.length == 0 && secondValue.length == 0)) {
+                let updatedInitialValue = initialValue.join("");
+                updatedInitialValue = +updatedInitialValue;
+                let updatedSecondValue = secondValue.join("");
+                updatedSecondValue = +updatedSecondValue;
+                let total = operate(operator, updatedInitialValue, updatedSecondValue);
+            }
+            removeSecondValueListeners();
+            addInitialValueListeners();
+            initialValue = [];
+            initialValue.push(total);
+            secondValue = [];
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        const equalButton = document.createElement('button');
+        container.appendChild(equalButton);
+        equalButton.textContent = "=";
+
+        function equal() {
+            if (!(initialValue.length == 0 && secondValue.length == 0)) {
+                let updatedInitialValue = initialValue.join("");
+                updatedInitialValue = +updatedInitialValue;
+                let updatedSecondValue = secondValue.join("");
+                updatedSecondValue = +updatedSecondValue;
+                let total = operate(operation, updatedInitialValue, updatedSecondValue);
+            }
+            removeSecondValueListeners();
+            addInitialValueListeners();
+            initialValue = [];
+            initialValue.push(total);
+            secondValue = [];
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+
+        equalButton.addEventListener('click', equal);
+
+
+        // Number Buttons
+
+
+        // Zero
+
+
+        const numberZero = document.createElement('button');
+        numberZero.textContent = 0;
+        container.appendChild(numberZero);
+
+        function initialValueZero() {
+            input.value += 0;
+            initialValue.push(0);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        };
+
+        function secondValueZero(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 0;
+            secondValue.push(0);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        };
+
+        numberZero.addEventListener('click', initialValueZero);
+
+
+        // One
+
+        const numberOne = document.createElement('button');
+        numberOne.textContent = 1;
+        container.appendChild(numberOne);
+
+        function initialValueOne() {
+                input.value += 1;
+                initialValue.push(1);
+                console.log("typeOf:" + typeof initialValue);
+                console.log("initialValue:" + initialValue);
+                console.log("secondValue:" + secondValue);
+            }
+
+
+        function secondValueOne(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 1;
+            secondValue.push(1);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        };
+
+        numberOne.addEventListener('click', initialValueOne);
+
+        // Number Two
+
+
+        const numberTwo = document.createElement('button');
+        numberTwo.textContent = 2;
+        container.appendChild(numberTwo);
+
+        function initialValueTwo() {
+            input.value += 2;
+            initialValue.push(2);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        function secondValueTwo(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 2;
+            secondValue.push(2);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        numberTwo.addEventListener('click', initialValueTwo);
+
+
+
+        // Number Three
+
+        const numberThree = document.createElement('button');
+        numberThree.textContent = 3;
+        container.appendChild(numberThree);
+
+        function initialValueThree() {
+            input.value += 3;
+            initialValue.push(3);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        function secondValueThree(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 3;
+            secondValue.push(3);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        numberThree.addEventListener('click', initialValueThree);
+
+        // Number Four
+
+        const numberFour = document.createElement('button');
+        numberFour.textContent = 4;
+        container.appendChild(numberFour);
+
+        function initialValueFour() {
+            input.value += 4;
+            initialValue.push(4);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        function secondValueFour(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 4;
+            secondValue.push(4);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        numberFour.addEventListener('click', initialValueFour);
+
+        // Number Five
+
+        const numberFive = document.createElement('button');
+        numberFive.textContent = 5;
+        container.appendChild(numberFive);
+
+
+        function initialValueFive() {
+            input.value += 5;
+            initialValue.push(5);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        function secondValueFive(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 5;
+            secondValue.push(5);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        numberFive.addEventListener('click', initialValueFive);
+
+
+        // Number Six
+
+        const numberSix = document.createElement('button');
+        numberSix.textContent = 6;
+        container.appendChild(numberSix);
+
+
+        function initialValueSix() {
+            input.value += 5;
+            initialValue.push(5);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        function secondValueSix(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 6;
+            secondValue.push(6);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        numberSix.addEventListener('click', initialValueSix);
+
+        // Number Seven
+
+        const numberSeven = document.createElement('button');
+        numberSeven.textContent = 7;
+        container.appendChild(numberSeven);
+
+        function initialValueSeven() {
+            input.value += 7;
+            initialValue.push(7);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        function secondValueSeven(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 7;
+            secondValue.push(7);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        numberSeven.addEventListener('click', initialValueSeven);
+
+        // Number Eight
+
+        const numberEight = document.createElement('button');
+        numberEight.textContent = 8;
+        container.appendChild(numberEight);
+
+        function initialValueEight() {
+            input.value += 8;
+            initialValue.push(8);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+         function secondValueEight(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 8;
+            secondValue.push(8);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        numberEight.addEventListener('click', initialValueEight);
+
+        // Number Nine
+
+        const numberNine = document.createElement('button');
+        numberNine.textContent = 9;
+        container.appendChild(numberNine);
+
+        function initialValueNine() {
+            input.value += 9;
+            initialValue.push(9);
+            console.log("typeOf:" + typeof initialValue);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        function secondValueNine(){
+            if(input.value == operation || secondValue.length == 0) input.value = ""; 
+            input.value += 9;
+            secondValue.push(9);
+            console.log("initialValue:" + initialValue);
+            console.log("secondValue:" + secondValue);
+        }
+
+        numberNine.addEventListener('click', initialValueNine);
+
+
+
+
+
+        // Operator Functions
+
+
+        function operate(operator, x, y) {
+            switch (operator) {
+                case "+":
+                    add(x,y);
+                    input.value = total;
+                    console.log("x:" + x);
+                    console.log("y:" + y);
+                    console.log("total:" + total);
+                    break;
+                case "-":
+                    subtract(x,y);
+                    input.value = total;
+                    console.log("x:" + x);
+                    console.log("y:" + y);
+                    console.log("total:" + total);
+                    break;
+                case "*":
+                    multiply(x,y);
+                    input.value = total;
+                    console.log("x:" + x);
+                    console.log("y:" + y);
+                    console.log("total:" + total);
+                    break;
+                case "/":
+                    divide(x,y);
+                    input.value = total;
+                    console.log("x:" + x);
+                    console.log("y:" + y);
+                    console.log("total:" + total);
+                    break;
+            }
+        }
+
+
+                
+
+    </script>
+    </body>
+</html>

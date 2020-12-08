@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+    </head>
+    <body>
+        <input type="text">
+        <button>Button</button>
+        <p></p>
+        <div></div>
+
+        <script>
+        const input = document.querySelector('input')
+        const para = document.querySelector('p')
+        const bttn = document.querySelector('button');
+        const container = document.querySelector('div');
+        const addBttn = document.createElement('button');
+        addBttn.textContent = "Add";
+        container.appendChild(addBttn);
+
+
+        
+
+        function storeValue() {
+            let value;
+            value = input.value;
+            let newValue = solve(value);
+        }
+
+        function addButton(){
+            input.value += "+";
+        }
+
+        function solve(value){
+            alert(eval(input.value));
+        }
+
+
+        bttn.addEventListener('click', solve);
+        addBttn.addEventListener('click', addButton);
+
+        
+
+    </script>
+    </body>
+</html>
