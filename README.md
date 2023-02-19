@@ -1,6 +1,11 @@
-# JavaScript Calculator
-Allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division. 
+# Application : Calculator
 
-### How it works
-When a user enters numbers and selects an operation, the JavaScript code retrieves the values and performs the selected operation.
-The result is then displayed to the user on the web page.
+## Assignment by The Odin Project
+
+Task :
+- Create a Calculator using JavaScript
+
+What I Learned :
+- How to Write Conditional Statements
+- How to Create Event Listeners
+- How to Implement Basic Logic
